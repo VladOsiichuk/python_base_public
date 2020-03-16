@@ -3,19 +3,21 @@ def get_only_digits_array(arr):
     :param arr: list of some values
     :return: list of values which are digits
     """
-
+    print(arr)
     """
     Дана функція еквівалентна наступним рядкам
     output_array = list()
     for n in arr:
-        if isinstance(n, int) or n.isalpha():
+        if isinstance(n, int) or (isinstance(n, str) and n.isdigit()):
             output_array.append(n)
+    return output_array
     """
-    return [
+    output_array = [
         n for n in arr
         if isinstance(n, int) or
-        (isinstance(n, str) and n.isalpha())
+        (isinstance(n, str) and n.isdigit())
     ]
+    return output_array
 
 
 def get_values_from_nested_arrays_to_one_array(arr):
@@ -34,10 +36,19 @@ def get_values_from_nested_arrays_to_one_array(arr):
             output_array.append(value)
     return output_value
     """
-    return [
-        value for i in arr for value in
-        ([i] if not isinstance(i, list) else i)
+    """
+    [[1, 2, 3],
+     [4, 5, 6],
+     [7, 8, 9], 
+     10]
+    """
+
+    output_value = [
+        value for nested_array in arr for value in
+        ([nested_array] if not isinstance(nested_array, list) else nested_array)
     ]
+
+    return output_value
 
 
 def main():
@@ -52,10 +63,16 @@ def main():
     for i in range(10):
         arr.append(i)
     """
-    arr = [i for i in range(10)]
-    print(arr)
-    print(type(arr))
+    # arr = [i for i in "Python"]
+    # print(arr)
+    # print(type(arr))
 
+
+    # print(get_only_digits_array(["1", 2, "3", "a", "b"]))
+    print(get_values_from_nested_arrays_to_one_array([[1, 2, 3],
+     [4, 5, 6],
+     [7, 8, 9],
+     10]))
 
 if __name__ == "__main__":
     main()

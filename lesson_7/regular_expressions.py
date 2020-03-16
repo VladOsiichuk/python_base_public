@@ -15,11 +15,11 @@ def main():
 
     # Перевірка, чи є у введеному рядку числа
     text = "123456"
-    result = re.match("[0-9]", text)
+    result = re.match("[0-9]+", text)
     print(bool(result))
 
     # Перевірка, чи введено у рядку тільки числа
-    text = "123456"
+    text = "123456A"
     result = re.fullmatch("[0-9]+", text)
     print(bool(result))
 
