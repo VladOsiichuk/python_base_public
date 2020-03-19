@@ -15,15 +15,28 @@ def get_file_to_read(path):
     return file
 
 
+def read_one_char(file):
+    return file.read(1)
+
+
 def main():
 
     file = get_file_to_read("students.txt")
     if file is None:
         return
 
+    # Отримати інформацію з файлу
     data_from_file = file.read()
-    print(data_from_file)
+
+    # Читати по одному символу
+    c = read_one_char(file)
+    while c:
+        print(c, end="")
+        c = read_one_char(file)
+    print()
+    # print(data_from_file)
     file.close()
+
 
 if __name__ == "__main__":
     main()

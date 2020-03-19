@@ -1,8 +1,7 @@
 def main():
 
-    file = open("test.txt", "w+")
-    print(file.read(5))
-    file.write("qwe")
+    file = open("test.txt", "w")
+    print(file.write("qwe"))
     file.close()
 
 

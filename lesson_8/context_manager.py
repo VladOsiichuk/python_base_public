@@ -12,7 +12,9 @@ def main():
     f.close()
     """
     with open("students.txt", "r") as f:
-        print(f.read())
+        data = f.read()
+        pass
+        # print(f.read())
 
 
 if __name__ == "__main__":
