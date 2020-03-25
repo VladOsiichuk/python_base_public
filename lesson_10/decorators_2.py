@@ -13,7 +13,11 @@ password_to_role_mapping = {
 def user_has_access(allowed_role):
     def wrapper(f):
         def wrapped(password):
+            print("ALLOWED ROLE", allowed_role)
+            print("password", password)
             actual_role = password_to_role_mapping.get(password)
+            print("ACTUAL ROLE", actual_role)
+            print("FUNCTION", f.__name__)
             if actual_role is None or actual_role != allowed_role:
                 print("You don't have permission to perform this action")
             else:
@@ -51,9 +55,7 @@ def get_input(prompt, required=True):
 
 def main():
     password = login()
-
     create_article(password=password)
-
 
 
 if __name__ == "__main__":
