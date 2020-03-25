@@ -1,7 +1,7 @@
 import os
 
 
-def file_exists(f):
+def file_exists(get_data_from_file):
     def wrapper(file_path):
         """
         file_path - це аргумент, який приймає функція, що була огорнута 
@@ -9,7 +9,7 @@ def file_exists(f):
         Тобто це аргумент, що був переданий у рядку 30 у функції main
         """
         if os.path.exists(file_path):
-            result =  f(file_path)
+            result =  get_data_from_file(file_path)
             result.append("Other value")
             return result
         else:

@@ -1,3 +1,5 @@
+from actions import show_list_of_articles, add_article, remove_article
+
 ADMIN_CREDENTIALS = {
     "username": "admin",
     "password": "1234567"
@@ -10,16 +12,6 @@ VISITOR_CREDENTIALS = {
     "username": "Visitor",
     "password": "11"
 }
-
-
-def show_list_of_articles():
-    pass
-
-def add_article():
-    pass
-
-def remove_article():
-    pass
 
 def get_admin_actions():
 
@@ -64,38 +56,41 @@ def show_user_menu(role_actions_func):
     }
 
     while True:
-        action = input("Enter your action: ")
-        if int(action) not in actions:
+        action = int(input("Enter your action: "))
+        if action not in actions:
             print("This is a bad action. Try again")
+            continue
         
         handler = handlers[action]
         return handler()
 
 def login():
     while True:
-        username, password = input("Please enter your username and password "), input("Please enter your username and password")
-        if not username and not password:
+        username, password = input("Please enter your username: "), input("Please enter your password: ")
+        if not username or not password:
             print("Credentials are incorrect. Try again")
 
         else:
             user_role = ""
             if username == ADMIN_CREDENTIALS["username"] and password == ADMIN_CREDENTIALS["password"]:
                 user_role = "ADMIN"
-            if username == EDITOR_CREDENTIALS["username"] and password == EDITOR_CREDENTIALS["password"]:
+            elif username == EDITOR_CREDENTIALS["username"] and password == EDITOR_CREDENTIALS["password"]:
                 user_role = "EDITOR"
-            if username == VISITOR_CREDENTIALS["username"] and password == VISITOR_CREDENTIALS["password"]:
+            elif username == VISITOR_CREDENTIALS["username"] and password == VISITOR_CREDENTIALS["password"]:
                 user_role = "VISITOR"
+            else:
+                print("Credentials are incorrect. Try again")
             
             if user_role:
                 return user_role
-
+            
 
 def main():
     role = login()
 
     menu_actions = {
         "ADMIN": get_admin_actions,
-        "EDITOR": get_visitor_actions,
+        "EDITOR": get_editor_actions,
         "VISITOR": get_visitor_actions
     }
     menu = menu_actions[role]
