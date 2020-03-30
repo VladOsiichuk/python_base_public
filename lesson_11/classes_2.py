@@ -11,7 +11,15 @@ class Human:
         """
         self.name = new_name
 
+    def __str__(self):
+        return f"{self.name}, {self.age}, {self.sex}"
+
+
 
 me = Human(19, "Vlad", "M")
-me.change_name("Vladyslav")
-print(me.name)
+print(me)
+# me.change_name("Vladyslav")
+# me.some_field = 1
+# print(me.some_field)
+# print(me.name)
+

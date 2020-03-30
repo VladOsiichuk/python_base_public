@@ -25,6 +25,12 @@ class FileManager:
         """
         if getattr(self, "__password", None) is None:
             self.__get_password()
-        pass
+        print("decoding... ")
 
 m = FileManager()
+
+# m.open_file("test.txt")
+# print(m.data_file)
+print(m._decode_file())
+
+print(m.__get_password())

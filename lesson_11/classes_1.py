@@ -12,3 +12,4 @@ class Human:
         self.sex = sex
 
 me = Human(19, "Vlad", "M")
+print(me.name)
